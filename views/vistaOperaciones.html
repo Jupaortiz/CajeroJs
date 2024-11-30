@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">  
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/10677/10677650.png">  
+    <title>Operaciones</title>
+</head>
+<style>
+    
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(145deg, #1a1a1a, #333333);
+    color: #f1f1f1;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: gold;
+    margin-bottom: 20px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: gold;
+    color: #1a1a1a;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: goldenrod;
+    transform: scale(1.00);
+}
+
+button:active {
+    background-color: goldenrod;
+}
+
+
+#formulario {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin: 20px 0;
+    padding: 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+}
+
+#formulario label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: gold;
+}
+
+#formulario input, #formulario select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #444;
+    color: white;
+    font-size: 16px; 
+    box-sizing: border-box;
+}
+
+
+#formulario input[type="number"] {
+    appearance: textfield; 
+}
+
+
+#tablamovimientos {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 10px;
+}
+
+#tablamovimientos th, #tablamovimientos td {
+    padding: 10px;
+    border: 1px solid #444;
+    color: #f1f1f1;
+}
+
+#tablamovimientos th {
+    background-color: gold;
+    color: #1a1a1a;
+}
+
+#tablamovimientos tr:nth-child(even) {
+    background-color: #333;
+}
+
+#tablamovimientos tr:nth-child(odd) {
+    background-color: #2a2a2a;
+}
+
+
+#mostrarmovimientos {
+    text-align: center;
+    color: gold;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.cerrarsesion {
+    text-align: right; 
+    padding: 10px 20px; 
+}
+
+.cerrarsesion a {
+    color: gold; 
+    text-decoration: none; 
+    font-size: 16px; 
+    border: 1px solid gold; 
+    padding: 8px 16px; 
+    border-radius: 4px; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.cerrarsesion a:hover {
+    background-color: goldenrod; 
+    color: black; 
+}
+
+
+</style>
+<body id="operaciones">
+
+    <nav class="cerrarsesion">
+        <a href="/index.html">Cerrar Sesión</a>
+    </nav>
+<h1>Consulta de Saldo</h1>   
+
+<h1 id="saldo"></h1>
+
+<button type="button" onclick="saldo()">Consultar Saldo</button>
+<br><br>
+
+<h1>Sección Transaccional</h1>
+<form id="formulario">
+
+    <label for="">Tipo Operación</label>
+    <select name="" id="tipotransaccion">
+        <option selected>Selección Tipo Operación</option>
+        <option value="adicion">Consignar</option>
+        <option value="retiro">Retirar</option>
+        <option value="transferencia">Transferir</option>
+    </select>
+    <label for="">Ingrese Usuario a quien va a Transferir (Unicamente en caso de transferencia)</label>
+    <input type="text" id="receptor" placeholder=" Ingrese Usuario Receptor">
+    <br>
+    <label for="">VALOR OPERACIÓN</label>
+    <input type="number" id="monto" placeholder="Digite el Valor">
+    <br><br>
+    <label for="">Procesar</label>
+    <button type="button" onclick="operaciones()">Procesar Operación</button>
+
+    
+</form>
+<br><br>
+
+<h1>Consulta de Movimientos</h1>    
+
+<button type="button" onclick="cargarTablaMovimientos()">Consultar Movimientos</button>
+<br><br><br>
+
+
+<div class="">
+    <h1>Lista de Movimientos</h1>
+    <table id="tablamovimientos">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Usuario</th>
+                <th>Tipo Movimiento</th>
+                <th>Valor Operación</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Las filas de la tabla las lleno desde JavaScript -->
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<!-- lo agrego para poder mostrar movimientos -->
+<p id="mostrarmovimientos">
+    <br>
+</p>
+
+
+<script src="./js/scriptOperecionesB.js"></script>
+</body>
+</html>
