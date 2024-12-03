@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/10677/10677650.png">
+    <link rel="stylesheet" href="../styles/vistaRegistro.css">
+</head>
+<body>
+    <form id="formulario">
+        <h1>Registro</h1>
+        
+        <div>
+            <label for="nombreusuario">Nombre de usuario:</label>
+            <input type="text" id="nombreusuario" name="nombreusuario" required>
+        </div>
+        
+        <div>
+            <label for="contrasenia">Contraseña:</label>
+            <input type="password" id="contrasenia" name="contrasenia" required>
+        </div>
+        
+        <div>
+            <label for="confirmarcontrasenia">Confirmar contraseña:</label>
+            <input type="password" id="confirmarcontrasenia" name="confirmarcontrasenia" required>
+        </div>
+        
+        <div>
+            <label for="fechaNacimiento">Fecha de nacimiento:</label>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+        </div>
+        
+        <button type="submit">Registrarse</button>
+        
+        <button type="button" id="continuar">Continuar</button>
+    </form>
+
+    <script src="../js/vistaRegistro.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/10677/10677650.png">
+    <link rel="stylesheet" href="../styles/vistaIngreso.css">
+</head>
+<body id="ingreso">
+    <main>
+        <form id="formulario">
+            <h1>Iniciar sesión</h1>
+            <div class="campo">
+                <label for="nombreusuario">Nombre de usuario:</label>
+                <input type="text" id="nombreusuario" name="nombreusuario" required placeholder="Ingrese su nombre de usuario">
+            </div>
+            <div class="campo">
+                <label for="clave">Contraseña:</label>
+                <input type="password" id="clave" name="clave" required placeholder="Ingrese su contraseña">
+            </div>
+            <button type="button" onclick="ingreso()">Iniciar sesión</button>
+        </form>
+    </main>
+
+    <script src="../js/vistaIngreso.js"></script>
+</body>
+</html>

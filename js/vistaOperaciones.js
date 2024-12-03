@@ -1,54 +1,81 @@
-   // Modulo consulta saldos
-   let usuarioTransaccional=JSON.parse(localStorage.getItem("nombreUsuarioActivo"));
-    console.log(usuarioTransaccional);
+let usuarioTransaccional = JSON.parse(localStorage.getItem("nombreUsuarioActivo"));
 
-    function saldo(){
-        alert('el saldo de '+usuarioTransaccional.nombreusuario+" es de "+usuarioTransaccional.saldo)
-    }
-    // Modulo Consulta movimientos
+// Guardar movimientos
+function guardarMovimientos(usuarioActivo, monto, movimiento, fechaOperacion) {
+    let movimientos = JSON.parse(localStorage.getItem('movimientos')) || [];
+    let nuevoMovimiento = {
+        fecha: fechaOperacion,
+        usuario: usuarioActivo,
+        valorOperacion: monto,
+        tipoMovimiento: movimiento,
+    };
+    movimientos.push(nuevoMovimiento);
+    localStorage.setItem('movimientos', JSON.stringify(movimientos));
+}
 
+// Verificar usuario receptor
+function verificarUsuarioExistente(nombreusuario) {
+    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    return usuarios.some(usuario => usuario.nombreusuario === nombreusuario);
+}
 
-    // Modulo Transacciones
+// Realizar operaciones
+function operaciones() {
+    let monto = Number(document.querySelector('#monto').value);
+    let movimiento = document.querySelector('#tipotransaccion').value;
+    let fechaOperacion = new Date().toLocaleString();
 
-    function operaciones(){
-        let monto= Number(document.querySelector('#monto').value);
-        let movimiento=document.querySelector('#tipotransaccion').value;
-    // operaciones
-    let transferencia;
-    let consignacion;
-    let retiro;
-
-    switch(movimiento){
+    switch (movimiento) {
         case 'adicion':
-            //Consignar
-            console.log('voy a consignar')
-            // limpia el formulario
+            guardarMovimientos(usuarioTransaccional.nombreusuario, monto, 'Consignación', fechaOperacion);
+            alert('Consignación realizada exitosamente');
             document.getElementById('formulario').reset();
-
-        break;
+            break;
 
         case 'retiro':
-            //Retirar
-            console.log('voy a retirar')
-            // limpia el formulario
+            guardarMovimientos(usuarioTransaccional.nombreusuario, monto, 'Retiro', fechaOperacion);
+            alert('Retiro realizado exitosamente');
             document.getElementById('formulario').reset();
-
-        break
+            break;
 
         case 'transferencia':
-            //transferir
-            console.log('voy a tranferir')
-            // limpia el formulario
+            let receptor = document.getElementById('receptor').value.trim();
+            if (verificarUsuarioExistente(receptor)) {
+                guardarMovimientos(usuarioTransaccional.nombreusuario, monto, `Transferencia a ${receptor}`, fechaOperacion);
+                alert('Transferencia realizada exitosamente');
+            } else {
+                alert('El usuario receptor no existe.');
+            }
             document.getElementById('formulario').reset();
+            break;
 
-        break
-    
-    default:
-        alert('Opción incorrecta. Intente nuevamente.');
-        // limpia el formulario
-        document.getElementById('formulario').reset();
-        break;
+        default:
+            alert('Opción de operación no válida.');
+            document.getElementById('formulario').reset();
+            break;
     }
+}
 
+// Cargar movimientos en la tabla
+function cargarTablaMovimientos() {
+    let movimientos = JSON.parse(localStorage.getItem('movimientos')) || [];
+    let tablaBody = document.querySelector('#tablamovimientos tbody');
+    tablaBody.innerHTML = '';
+
+    movimientos.forEach(movimiento => {
+        let fila = document.createElement('tr');
+
+        fila.innerHTML = `
+            <td>${movimiento.fecha}</td>
+            <td>${movimiento.usuario}</td>
+            <td>${movimiento.tipoMovimiento}</td>
+            <td>${movimiento.valorOperacion}</td>
+        `;
+
+        tablaBody.appendChild(fila);
+    });
+
+    if (movimientos.length === 0) {
+        alert('No hay movimientos registrados.');
     }
-
+}

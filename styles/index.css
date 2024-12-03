@@ -1,0 +1,98 @@
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header */
+.encabezado {
+    background-color: #003366; /* Azul oscuro */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.menuPrincipal ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.menuPrincipal ul li {
+    margin-left: 30px;
+}
+
+.menuPrincipal ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.menuPrincipal ul li a:hover {
+    color: #ffcc00; /* Color dorado en hover */
+}
+
+/* Secciones */
+.seccion {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.seccion:nth-child(even) {
+    background-color: #e6f2ff; /* Azul claro para alternar */
+}
+
+.seccionContenido {
+    flex: 1;
+    padding: 20px;
+}
+
+.seccionContenido h2 {
+    font-size: 30px;
+    color: #003366;
+}
+
+.seccionContenido p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.seccionImagen {
+    flex: 1;
+    text-align: center;
+}
+
+.seccionImagen img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+}
+
+/* Footer */
+.pieDePagina {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 16px;
+}
+
+.pieDePagina p {
+    margin: 0;
+}
