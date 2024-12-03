@@ -9,51 +9,52 @@
 </head>
 <body id="operaciones">
 
-    <nav class="navbar">
+    <nav class="cerrarsesion">
         <a href="../views/index.html">Cerrar Sesión</a>
         <button class="btn" type="button" onclick="saldo()">Consultar Saldo</button>
         <button class="btn" type="button" onclick="cargarTablaMovimientos()">Consultar Movimientos</button>
     </nav>
 
-    <main>
-        <section class="transaccional">
-            <h1>Sección Transaccional</h1>
-            <form id="formulario" class="formulario">
-                <label for="tipotransaccion">Tipo Operación</label>
-                <select id="tipotransaccion">
-                    <option selected>Selección Tipo Operación</option>
-                    <option value="adicion">Consignar</option>
-                    <option value="retiro">Retirar</option>
-                    <option value="transferencia">Transferir</option>
-                </select>
+    <h1>Sección Transaccional</h1>
+    <form id="formulario" class="formulario">
+        <label for="tipotransaccion">Tipo Operación</label>
+        <select id="tipotransaccion">
+            <option selected>Selección Tipo Operación</option>
+            <option value="adicion">Consignar</option>
+            <option value="retiro">Retirar</option>
+            <option value="transferencia">Transferir</option>
+        </select>
 
-                <label for="receptor">Ingrese Usuario a quien va a Transferir (Unicamente en caso de transferencia)</label>
-                <input type="text" id="receptor" placeholder="Ingrese Usuario Receptor">
+        <label for="receptor">Ingrese Usuario a quien va a Transferir (Unicamente en caso de transferencia)</label>
+        <input type="text" id="receptor" placeholder="Ingrese Usuario Receptor">
 
-                <label for="monto">VALOR OPERACIÓN</label>
-                <input type="number" id="monto" placeholder="Digite el Valor">
+        <label for="monto">VALOR OPERACIÓN</label>
+        <input type="number" id="monto" placeholder="Digite el Valor">
 
-                <button class="btn" type="button" onclick="operaciones()">Procesar Operación</button>
-            </form>
-        </section>
+        <button class="btn" type="button" onclick="operaciones()">Procesar Operación</button>
+    </form>
+    <br><br>
 
-        <section class="movimientos">
-            <h1>Lista de Movimientos</h1>
-            <table id="tablamovimientos">
-                <thead>
-                    <tr>
-                        <th>Fecha</th>
-                        <th>Usuario</th>
-                        <th>Tipo Movimiento</th>
-                        <th>Valor Operación</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Las filas de la tabla las lleno desde JavaScript -->
-                </tbody>
-            </table>
-        </section>
-    </main>
+    <div id="movimientos">
+        <h1>Lista de Movimientos</h1>
+        <table id="tablamovimientos">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Usuario</th>
+                    <th>Tipo Movimiento</th>
+                    <th>Valor Operación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las filas de la tabla las lleno desde JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <p id="mostrarmovimientos">
+        <br>
+    </p>
 
     <script src="../js/vistaOperaciones.js"></script>
 </body>
